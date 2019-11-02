@@ -24,11 +24,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Intake extends Subsystem {
     private WPI_VictorSPX intakeMotor;
     private DigitalInput ballDetect;
+    private DigitalInput ballDetect2;
 
     public Intake() {
         intakeMotor = new WPI_VictorSPX(7);
         
         ballDetect = new DigitalInput(6);
+
+        ballDetect2 = new DigitalInput(7);
     }
 
     @Override
@@ -37,6 +40,8 @@ public class Intake extends Subsystem {
 
     @Override
     public void periodic() {
+        SmartDashboard.putBoolean("yeah ok boomer", Robot.intake.detectBall());
+        SmartDashboard.putBoolean("yeah ok buddy", Robot.intake.detectBall2());
     }
 
     public void intakeSet(double rate) {
@@ -50,9 +55,13 @@ public class Intake extends Subsystem {
     public boolean detectBall() {
         return ballDetect.get();
     }
-
-    public void isBallGot() {
-        SmartDashboard.putBoolean("Ball?", detectBall());
+    
+    public boolean detectBall2() {
+        return ballDetect2.get();
     }
+
+    // public void isBallGot() {
+    //     SmartDashboard.putBoolean("Ball?", detectBall());
+    // }
 }
 

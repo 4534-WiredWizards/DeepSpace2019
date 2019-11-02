@@ -80,6 +80,7 @@ public class OI {
         joystick = new Joystick(0);
         
         select = new JoystickButton(joystick, 7);
+        aButton = new JoystickButton(joystick, 1);
         select.whenPressed(new ToggleKablams());
         start = new JoystickButton(joystick, 8);
         start.whenPressed(new ToggleRocket());
